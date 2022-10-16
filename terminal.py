@@ -23,6 +23,18 @@
 # reference db file idk if it will work
 import db
 
+# ------------------HELPER FUNCS------------------
+def extract_team(opt):
+    if (opt.upper() == 'D'):
+        return "Design"
+    elif (opt.upper() == 'P'):
+        return "Photo"
+    elif (opt.upper() == 'C'):
+        return "Copy"
+    else:
+        print("Invalid letter, returning to menu")
+        main()
+
 # ------------------FUNCS TO CALL FOR EACH OPTION------------------
 
 # ******OPT 1 - QUERY LIST OF MEMBERS******
@@ -96,6 +108,7 @@ def create_new_member():
             C - copy (❁´◡`❁)\n
          Please enter a letter: """)
 
+
     # !!!!!TEST DEBUG REMOVE LATER!!!!!
     print(name, pronouns, team)
 
@@ -103,7 +116,7 @@ def create_new_member():
     record = {
         "name" : name,
         "pronouns" : pronouns,
-        "team" : team, 
+        "team" : extract_team(team), 
         "spreads" : {}
     }
 
