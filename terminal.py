@@ -20,6 +20,9 @@
      - mass input members/spreads
      - extend to other teams, modify to allow team members who double and not have conflicts
 """
+# reference db file idk if it will work
+import db
+
 # ------------------FUNCS TO CALL FOR EACH OPTION------------------
 
 # ******OPT 1 - QUERY LIST OF MEMBERS******
@@ -41,6 +44,7 @@ def get_members():
         get_by_team()
     else:
         print("db query for all entries")
+        db.return_all()
         main()
 
 # ******OPT 2 - LOOK UP MEMBER AND ADD DATA FOR THEM******
@@ -94,8 +98,18 @@ def create_new_member():
 
     # !!!!!TEST DEBUG REMOVE LATER!!!!!
     print(name, pronouns, team)
+
+    # put code in to create member mongo db don't fail me now
+    record = {
+        "name" : name,
+        "pronouns" : pronouns,
+        "team" : team, 
+        "spreads" : {}
+    }
+
+    db.insert_record(record)
+
     main()
-    # put code in to create member
 
 
 # ------------------BEGINNING OF PROGRAM------------------
